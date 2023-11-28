@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
 import differenceInCalendarDays from 'date-fns/differenceInCalendarDays'
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import axios from "axios";
 import { UserContext } from '../UserContext';
 
@@ -54,7 +54,7 @@ export default function BookingWigjit({place}) {
             </div>
               <div className="py-3 px-4">
                 <label htmlFor="">Number of guests</label>
-                <input type="Number" value={maxGuests} onChange={ev=>setMaxGuests(ev.target.value)} />
+                <input type="Number" min="1" max={place.maxGuests} value={maxGuests} onChange={ev=>setMaxGuests(ev.target.value)} />
               </div>
               {numberOfDays>0 && (
                  <div className="py-3 px-4">
@@ -65,11 +65,14 @@ export default function BookingWigjit({place}) {
 
                </div>
               )}
-              <button onClick={BookThisPlace} className="primary">Book now
-              {numberOfDays>0 &&(
-                <span className='px-3'>{numberOfDays*place.price}rs </span>
-              )}
-              </button>
+              {
+                user &&<button onClick={BookThisPlace} className="primary">Book now
+                {numberOfDays>0 &&(
+                  <span className='px-3'>{numberOfDays*place.price}rs </span>
+                )}
+                </button>
+              }
+              <Link className="bg-rose-500 m-5  text-white text-center py-2 px-44 rounded-full w-full"  to={'/login'}>Login</Link>
           </div>
   </> 
   )

@@ -78,8 +78,16 @@ export default function ProfilePage() {
       <AccountNav />
       {subpage === 'profile' && (
         <div className="text-center max-w-lg mx-auto">
+          <div className="flex flex-row  pl-48">
+            <h3 className="text-xl " >Name:</h3>
+            <p className="text-xl ">{user.name}</p>
+          </div>
+          <div className="flex flex-row  pl-32 mb-5">
+            <h3 className="text-xl " >Email:</h3>
+            <p className="text-xl ">{user.email}</p>
+          </div>
           Logged in as {user.name} ({user.email})<br />
-          <button onClick={logout} className="primary max-w-sm mt-2">Logout</button>
+          <button onClick={logout} className=" bg-rose-500 primary max-w-sm mt-2">Logout</button>
         </div>
       )}
       {subpage === 'places' && (

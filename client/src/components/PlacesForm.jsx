@@ -23,6 +23,7 @@ export default function PlacesForm() {
     const[maxGuests,setMaxGuests]=useState(1);
     const[photoLink,SetPhotoLink]=useState("");
     const[price,setPrice]=useState(100)
+    const [loading ,setloading]=useState(false)
   
     const[redirectToPlaceList,setRedirectToPlaceList]=useState(false)
     useEffect(()=>{
@@ -46,8 +47,10 @@ export default function PlacesForm() {
 
     async function addPhotoByLink( ev ){
         ev.preventDefault();
+        setloading(true)
         const{data:filename}=await axios.post("/upload-by-link",{link:photoLink})
         setAddedphoto(prev=>{
+          setloading(false)
           return[...prev,filename]
         })
         SetPhotoLink("");
@@ -125,7 +128,7 @@ export default function PlacesForm() {
       <p className="text-gray-500 text-sm">more=better</p>
       <div className="flex gap-2">
         <input type="text" placeholder="Add using Link ...jpg" value={photoLink} onChange={ev=>SetPhotoLink(ev.target.value)}  />
-        <button onClick={addPhotoByLink} className="bg-gray-300 px-4 rounded-full">
+        <button disabled={loading} onClick={addPhotoByLink} className="bg-gray-300 px-4 rounded-full">
           Add Photos
         </button>
       </div>

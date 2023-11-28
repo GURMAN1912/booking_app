@@ -9,6 +9,6 @@ button{
     @apply bg-gray-300 ;
 }
 button.primary{
-    background-color:#8B4513;
-    @apply  bg-primary p-2 w-full text-white rounded-2xl;
+    background-color:rgb(244 63 94);
+    @apply  bg-rose-500 p-2 w-full text-white rounded-2xl;
 }

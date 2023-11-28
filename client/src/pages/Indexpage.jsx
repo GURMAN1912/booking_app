@@ -9,9 +9,9 @@ export default function Indexpage(){
         })
     },[])
     return(
-    <div className="m-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+    <div className="m-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
         {places.length>0 &&places.map(place=>(
-            <Link key={place._id} to={"/place/"+place._id}>
+            <Link key={place._id} to={"/place/"+place._id} className= " rounded-xl p-2 hover:bg-white hover:scale-105 ">
                 <div className="bg-grey-500 mb-2 rounded-2xl flex">
                     {place.photos?.[0] &&(
                         <img className="rounded-2xl object-cover aspect-square "    

@@ -22,7 +22,7 @@ export default function BookingPage() {
     }
     console.log(booking)
   return (
-      <div className="mt-4 bg-gray-100 p-8">
+      <div className="pt-4 bg-gray-200 p-8">
       <h1 className="text-3xl">{booking.place.title}</h1>
       <a
         target="_blank"
@@ -36,7 +36,7 @@ export default function BookingPage() {
           <h2 className='text-xl'>Your Booking Information:</h2>
         <BookingDetail booking={booking}></BookingDetail>
         </div>
-        <div className='bg-primary text-white p-2 rounded-2xl'>
+        <div className='bg-rose-500 text-white p-2 rounded-2xl'>
           Total Price:{booking.price}
         </div>
 

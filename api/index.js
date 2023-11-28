@@ -200,7 +200,20 @@ app.get("/places/:id", async (req, res) => {
   const { id } = req.params;
   res.json(await Place.findById(id));
 });
+app.delete('places/:id',async (req, res) => {
+  const listing = await Place.findById(req.params.id);
 
+  if (!listing) {
+    return next(errorHandler(404, 'Listing not found!'));
+  }
+
+  try {
+    await Place.findByIdAndDelete(req.params.id);
+    res.status(200).json('place  has been deleted!');
+  } catch (error) {
+    next(error);
+  }
+});
 app.put("/places", async (req, res) => {
   // mongoose.connect(process.env.MONGO_URL);
   const { token } = req.cookies;
